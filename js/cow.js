@@ -8,8 +8,8 @@
 
     // Private functions
     var mergeStr = function ( o, n, options ) {
-      o = o.replace(/\s+$/, '');
-      n = n.replace(/\s+$/, '');
+      o = o.replace(/\s+$/, '') || '';
+      n = n.replace(/\s+$/, '') || '';
       var defaultOptions = { silent: true, del:{b:'',e:''}, ins:{b:'',e:''} };
       options = options || defaultOptions;
 
