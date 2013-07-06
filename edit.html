@@ -57,7 +57,7 @@ and open the template in the editor.
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="cow-row">
-          <a class="brand" href="#">Cow Dev : </a>
+          <a class="brand" href="index.html">Cow Dev : </a>
           <div class="btn" style="float:right;">Download</div>
         </div>
       </div>
@@ -119,8 +119,14 @@ and open the template in the editor.
               }
       );
       
+      var hash = window.location.hash;
+      var userRoom = hash.substr(1, hash.length - 1);
+
+      $('.brand').text('Cow Dev : ' + userRoom);
+
       cow.init({ 
-        codeMirror: editor 
+        codeMirror: editor,
+        room: encodeURIComponent(userRoom)
       });
 
       $('#cow-html-render').height($(document).height() - 140);

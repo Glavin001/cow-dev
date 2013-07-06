@@ -60,6 +60,7 @@
       }
       return str;
     };
+    
     var loadRun = function() {
       console.log("loadRun");
 
@@ -68,7 +69,6 @@
       dstDoc.write(editor.doc.getValue());
       dstDoc.close();
     };
-
     
     // Public Variables
     cow.codeMirror = null;
@@ -77,15 +77,21 @@
     // Public method
     cow.init = function(settings) {
         console.log('Cow init:', settings);
-        if (settings.codeMirror)
+        if (settings.codeMirror) {
             cow.codeMirror = settings.codeMirror;
+        }
 
+        if (settings.room) {
+            cow.room = settings.room
+        }
         //
         cow.setup();
     };
+
     cow.getRoom = function() {
         return cow.room;
     };
+
     cow.setup = function( ) {
 
         if (goinstant) {
