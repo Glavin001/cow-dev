@@ -24,58 +24,30 @@ and open the template in the editor.
       <div class="navbar-inner">
         <div class="cow-row">
           <a class="brand" href="#">Cow Dev</a>
-          <div class="btn" style="float:right;">Download</div>
         </div>
       </div>
 	</div>
 	<div class="container">
       <div class="row">
-        <div class="span6">
+        <div class="span12">
           <div class="well">
+
             <h1>Welcome!</h1>
             <p>Welcome to the CowDev splash page. Here is where you make your dreams come true, 
   		       and well... <b>co-develop</b> with your pals! You can join or create rooms and share your code.</p>
-            <p>
-              <a class="btn btn-primary btn-large">
-                Learn more
-              </a>
-            </p>
+            <form>
+              <fieldset>
+                <legend>Join or Create Room :</legend>
+                <input id="roomInput" 
+                  type="text" placeholder="Session Name..." style="width:450px; height:40px;"><br />
+                <a id="roomButton"
+                  class="btn inline-block" >Join or Create</a>
+              </fieldset>
+            </form>
           </div>
-	      <br />
-	      <form>
-            <fieldset>
-			  <legend>Join or Create Room :</legend>
-			  <input id="roomInput" 
-          type="text" placeholder="Session Name..." style="width:450px; height:40px;"><br />
-			  <a id="roomButton"
-          class="btn inline-block" >Join or Create</a>
-		    </fieldset>
-          </form>
+	      
         </div>
-        <div class="span6">
-          <form class="form-horizontal">
-            <div class="control-group">
-              <label class="control-label" for="inputEmail">Email</label>
-              <div class="controls">
-                <input type="text" id="inputEmail" placeholder="Email" style="width:250px; height:40px;">
-              </div>
-            </div>
-			<div class="control-group">
-			  <label class="control-label" for="inputPassword">Password</label>
-			    <div class="controls">
-				  <input type="password" id="inputPassword" placeholder="Password" style="width:250px; height:40px;">
-				</div>
-			  </div>
-			  <div class="control-group">
-			    <div class="controls">
-				  <label class="checkbox">
-				  <input type="checkbox"> Remember me</label>
-				  <button type="submit" class="btn">Sign in</button>
-			    </div>
-			  </div>
-		    </div>
-		  </form>
-	    </div>
+       
 	  </div>
     </div>
   
