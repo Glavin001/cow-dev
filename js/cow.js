@@ -72,7 +72,7 @@
     
     // Public Variables
     cow.codeMirror = null;
-    cow.merging = false;
+    cow.merging = true;
     cow.room = "landing";
 
     // Public method
@@ -110,7 +110,10 @@
 
                         if (codeMirror.getValue() !== value) {
                             var anchor = codeMirror.getCursor(true), head = codeMirror.getCursor(false); // Backup original selection position
-                            if (cow.merging) value = mergeStr(codeMirror.getValue()||"", value||"");
+                            if (cow.merging) {
+                                value = mergeStr(codeMirror.getValue()||"", value||"");
+                                myChange = true;
+                            }
                             codeMirror.setValue(value); // Set new value / contents
                             codeMirror.setSelection(anchor, head);  // Restore selection position
                             codeMirror.setCursor(head.line, head.ch); // Restore cursor position
