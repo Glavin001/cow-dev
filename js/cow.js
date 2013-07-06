@@ -121,7 +121,7 @@
 
                     // handle sets from remote users
                     codeKey.on('set', function(value, context) {
-                        myChange = false; 
+                        // myChange = false; 
                         updateCode(value);
                     });
                     
