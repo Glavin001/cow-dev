@@ -24,3 +24,15 @@ $('#roomButton').on('click', function() {
 	document.location.href = "edit.html#" + roomTitle;
 	return false; 
 });
+
+$('#cow-lang-web').on('click', function() {
+	console.log("lang : web");
+});
+
+$('#cow-lang-python').on('click', function() {
+	console.log("lang : python");
+});
+
+$('#cow-lang-java').on('click', function() {
+	console.log("lang : java");
+});
