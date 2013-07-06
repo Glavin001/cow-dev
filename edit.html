@@ -87,13 +87,16 @@ and open the template in the editor.
         <li>
           <a href="#cow-view-tab" data-toggle="tab">Run / View</a>
         </li>
+        <li>
+          <input type="file" id="files" name="files[]" multiple />
+        </li>
       </ul>
 
       <div class="tab-content">
         <div id="cow-edit-tab" 
              class="tab-pane active">
 
-          <textarea id="cow-editor"></textarea>
+          <textarea id="cow-editor">Test</textarea>
 
         </div>
 
@@ -146,5 +149,30 @@ and open the template in the editor.
       $('#cow-html-render').height($(document).height() - 140);
     </script>
     <script src="js/cow-dev.js"></script>
+
+    <script>
+
+     function handleFileSelect(evt) {
+    
+    reader = new FileReader();
+    reader.onabort = function(e) {
+      alert('File read cancelled');
+    };
+    reader.onloadstart = function(e) {
+      document.getElementById('progress_bar').className = 'loading';
+    };
+    reader.onload = function(e) {
+      // Ensure that the progress bar displays 100% at the end.
+      editor.setValue(e.target.result);
+    }
+
+    // Read in the image file as a binary string.
+    reader.readAsBinaryString(evt.target.files[0]);
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+    </script>
+
   </body>
 </html>
