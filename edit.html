@@ -7,15 +7,114 @@ and open the template in the editor.
   <head>
     <title>Cow Dev : Editor</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    
+    <link href="css/cow-dev.css" rel="stylesheet" media="screen">
+
+    <script src="codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    <script src="codemirror/mode/javascript/javascript.js"></script>
+
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="http://cs.smu.ca/hackaweek/js/codemirror/lib/codemirror.css">
+    <script src="codemirror/mode/javascript/javascript.js"></script>
+    <script src="codemirror/mode/css/css.js"></script>
+    <script src="codemirror/mode/xml/xml.js"></script>
+    <script src="codemirror/mode/clike/clike.js"></script>
+    <script src="codemirror/mode/php/php.js"></script>
+    <script src="codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script>
+      // Define an extended mixed-mode that understands vbscript and
+      // leaves mustache/handlebars embedded templates in html mode
+      var mixedMode = {
+        name: "htmlmixed",
+        scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
+            mode: null},
+          {matches: /(text|application)\/(x-)?vb(a|script)/i,
+            mode: "vbscript"}]
+      };
+    </script>
+    <style type="text/css">
+      .CodeMirror {
+        border: 1px solid #eee;
+        height: auto;
+      }
+      .CodeMirror-scroll {
+        overflow-y: hidden;
+        overflow-x: auto;
+      }
+
+      body { 
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+
   </head>
   <body>
-    <div>TODO write content</div>
-    
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="cow-row">
+          <a class="brand" href="#">Cow Dev : </a>
+          <div class="btn" style="float:right;">Download</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row cow-row">
+
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#html" data-toggle="tab">Raw HTML</a>
+        </li>
+        <li>
+          <a href="#view" data-toggle="tab">View</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="html" 
+             class="tab-pane active">
+          <textarea id="editor">
+<html>
+  <head>
+  </head>
+  <body>
+    Hello Coder!
+  </body>
+</html>
+          </textarea>
+        </div>
+        <div id="view"
+             class="tab-pane">
+          <p>Howdy, I'm in Section 2.</p>
+        </div>
+      </div>
+    </div>
+
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      var editor = document.getElementById('editor');
+      var myCodeMirror = CodeMirror.fromTextArea(
+              editor,
+              {
+                lineNumbers: true,
+                matchBrackets: true,
+                continueComments: "Enter",
+                indentUnit: 4,
+                smartIndent: true,
+                tabSize: 4,
+                indentWithTabs: true,
+                lineWrapping: true,
+                tabMode: "indent",
+                mode: mixedMode,
+                viewportMargin: Infinity
+              }
+      );
+    </script>
   </body>
 </html>
