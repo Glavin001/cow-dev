@@ -67,17 +67,18 @@ and open the template in the editor.
 
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="#html" data-toggle="tab">Raw HTML</a>
+          <a href="#cow-edit-tab" data-toggle="tab">Raw HTML</a>
         </li>
         <li>
-          <a href="#view" data-toggle="tab">View</a>
+          <a href="#cow-view-tab" data-toggle="tab">View</a>
         </li>
       </ul>
 
       <div class="tab-content">
-        <div id="html" 
+        <div id="cow-edit-tab" 
              class="tab-pane active">
-          <textarea id="editor">
+
+          <textarea id="cow-editor">
 <html>
   <head>
   </head>
@@ -86,11 +87,17 @@ and open the template in the editor.
   </body>
 </html>
           </textarea>
+
         </div>
-        <div id="view"
+
+        <div id="cow-view-tab"
              class="tab-pane">
-          <p>Howdy, I'm in Section 2.</p>
+          
+         <iframe id="cow-html-render">
+         </iframe>
+          
         </div>
+        
       </div>
     </div>
 
@@ -98,7 +105,7 @@ and open the template in the editor.
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-      var editor = document.getElementById('editor');
+      var editor = document.getElementById('cow-editor');
       var myCodeMirror = CodeMirror.fromTextArea(
               editor,
               {
@@ -115,6 +122,10 @@ and open the template in the editor.
                 viewportMargin: Infinity
               }
       );
+        
+        console.log($(window).scrollTop());
+        
+        $('#cow-html-render').height($(document).height() - 140);
     </script>
   </body>
 </html>
