@@ -3,18 +3,82 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Cow Dev : Editor</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/cow-dev.css" rel="stylesheet" media="screen">
+    
+    <style>
+      body { 
+    	padding-top: 180px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	</style>
     
   </head>
   <body>
-    <div>TODO write content</div>
-    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="cow-row">
+          <a class="brand" href="#">Cow Dev : </a>
+          <div class="btn" style="float:right;">Download</div>
+        </div>
+      </div>
+	</div>
+	<div class="container">
+      <div class="row">
+        <div class="span6">
+          <div class="well">
+            <h1>Welcome!</h1>
+            <p>Welcome to the CowDev splash page. Here is where you make your dreams come true, 
+  		       and well...Co-develop with your pals! You can join, create, and share your code.</p>
+            <p>
+              <a class="btn btn-primary btn-large">
+                Learn more
+              </a>
+            </p>
+          </div>
+	      <br />
+	      <form>
+            <fieldset>
+			  <legend>Join or Create a Session:</legend>
+			  <input type="text" placeholder="Session Name..." style="width:450px; height:40px;"><br />
+			  <button type="join" class="btn inline-block">Join</button>
+			  <!-- <button type="create" class="btn btn-block">Create</button> -->
+			  <a class="btn inline-block" href="http://www.google.ca">Create</a>
+		    </fieldset>
+          </form>
+        </div>
+        <div class="span6">
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="inputEmail">Email</label>
+              <div class="controls">
+                <input type="text" id="inputEmail" placeholder="Email" style="width:250px; height:40px;">
+              </div>
+            </div>
+			<div class="control-group">
+			  <label class="control-label" for="inputPassword">Password</label>
+			    <div class="controls">
+				  <input type="password" id="inputPassword" placeholder="Password" style="width:250px; height:40px;">
+				</div>
+			  </div>
+			  <div class="control-group">
+			    <div class="controls">
+				  <label class="checkbox">
+				  <input type="checkbox"> Remember me</label>
+				  <button type="submit" class="btn">Sign in</button>
+			    </div>
+			  </div>
+		    </div>
+		  </form>
+	    </div>
+	  </div>
+    </div>
+  
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
