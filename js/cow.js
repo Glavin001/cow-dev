@@ -72,6 +72,7 @@
     
     // Public Variables
     cow.codeMirror = null;
+    cow.merging = false;
     cow.room = "landing";
 
     // Public method
@@ -80,6 +81,8 @@
         if (settings.codeMirror)
             cow.codeMirror = settings.codeMirror;
 
+        if (settings.merging)
+            cow.merging = settings.merging;
         //
         cow.setup();
     };
@@ -107,7 +110,7 @@
 
                         if (codeMirror.getValue() !== value) {
                             var anchor = codeMirror.getCursor(true), head = codeMirror.getCursor(false); // Backup original selection position
-                            var value = mergeStr(codeMirror.getValue()||"", value||"");
+                            if (cow.merging) value = mergeStr(codeMirror.getValue()||"", value||"");
                             codeMirror.setValue(value); // Set new value / contents
                             codeMirror.setSelection(anchor, head);  // Restore selection position
                             codeMirror.setCursor(head.line, head.ch); // Restore cursor position
@@ -121,7 +124,7 @@
 
                     // handle sets from remote users
                     codeKey.on('set', function(value, context) {
-                        // myChange = false; 
+                        myChange = false; 
                         updateCode(value);
                     });
                     
