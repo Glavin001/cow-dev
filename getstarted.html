@@ -1,0 +1,47 @@
+<html>
+ <head>
+  <title>Example GoInstant Application</title>
+  <script src="https://cdn.goinstant.net/client/platform.min.js"></script>
+  <script type="text/javascript">
+
+   function onLoad() {
+
+     var url = 'https://goinstant.net/co-web-dev/cow-dev/getstarted';
+
+     goinstant.connect(url, function(err, platform, session) {
+       if (err) {
+         console.log('error connecting');
+         return;
+       }
+
+       var nameKey = session.key('/name');
+       var nameInput = document.getElementById('name');
+
+       // handle sets from remote users
+       nameKey.on('set', function(value, context) {
+         nameInput.value = value;
+       });
+
+       // set the value when we load
+       nameKey.get(function(err, value, context) {
+         nameInput.value = value;
+       });
+
+       function setName() {
+         setTimeout(function() {
+           // set key to the new value
+           nameKey.set(nameInput.value);
+         }, 0);
+       }
+
+       nameInput.addEventListener('keyup', setName);
+       nameInput.addEventListener('change', setName);
+     });
+   }
+
+  </script>
+ </head>
+ <body onload="onLoad();">
+    <label for="name">Name</label><input type="text" id="name" />
+ </body>
+</html>
