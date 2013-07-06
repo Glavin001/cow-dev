@@ -31,37 +31,40 @@
                 if (cow.codeMirror) {
                     var codeMirror = cow.codeMirror;
                     var codeKey = session.key('/code');
-                    var currentCode = null;
-                    
+
+                    var myChange = true;
+
                     // Update the Code Mirror contents
                     function updateCode(value) {
-                        var anchor = codeMirror.getCursor(true), head = codeMirror.getCursor(false); // Backup original selection position
-                        codeMirror.setValue(value); // Set new value / contents
-                        codeMirror.setSelection(anchor, head);  // Restore selection position
-                        codeMirror.setCursor(head.line, head.ch); // Restore cursor position
-                        currentCode = value;
+
+                        if (codeMirror.getValue() !== value) {
+                            var anchor = codeMirror.getCursor(true), head = codeMirror.getCursor(false); // Backup original selection position
+
+                            codeMirror.setValue(value); // Set new value / contents
+                            codeMirror.setSelection(anchor, head);  // Restore selection position
+                            codeMirror.setCursor(head.line, head.ch); // Restore cursor position
+                        }
                     };
-                    
-                    // handle sets from remote users
-                    codeKey.on('set', function(value, context) {
-                        updateCode(value);
-                    });
 
                     // set the value when we load
                     codeKey.get(function(err, value, context) {
                         updateCode(value);
                     });
 
-                    function setCode() {
-                        var value = codeMirror.getValue();
-                        
-                        codeKey.set(value);
-                    }
+                    // handle sets from remote users
+                    codeKey.on('set', function(value, context) {
+                        myChange = false; 
+                        updateCode(value);
+                    });
                     
                     // Setup Code Mirror
                     codeMirror.on('change', function(event, instance, changeObj) {
-                        // console.log(event, instance, changeObj);
-                        // setCode();
+                        console.log("mirror change");
+                        if (myChange) {
+                            codeKey.set(codeMirror.getValue());
+                        } else {
+                            myChange = true;
+                        }
                     });
                     
                 }
