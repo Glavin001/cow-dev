@@ -17,3 +17,10 @@ $('a[href="#cow-view-tab"]').on('show', function () {
   
   loadRun();
 });
+
+$('#roomButton').on('click', function() {
+	console.log('click');
+	var roomTitle = $('#roomInput').val();
+	document.location.href = "edit.html#" + roomTitle;
+	return false; 
+});

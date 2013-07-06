@@ -20,10 +20,10 @@ and open the template in the editor.
     
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="cow-row">
-          <a class="brand" href="#">Cow Dev : </a>
+          <a class="brand" href="#">Cow Dev</a>
           <div class="btn" style="float:right;">Download</div>
         </div>
       </div>
@@ -34,7 +34,7 @@ and open the template in the editor.
           <div class="well">
             <h1>Welcome!</h1>
             <p>Welcome to the CowDev splash page. Here is where you make your dreams come true, 
-  		       and well...Co-develop with your pals! You can join, create, and share your code.</p>
+  		       and well... <b>co-develop</b> with your pals! You can join or create rooms and share your code.</p>
             <p>
               <a class="btn btn-primary btn-large">
                 Learn more
@@ -44,11 +44,11 @@ and open the template in the editor.
 	      <br />
 	      <form>
             <fieldset>
-			  <legend>Join or Create a Session:</legend>
-			  <input type="text" placeholder="Session Name..." style="width:450px; height:40px;"><br />
-			  <button type="join" class="btn inline-block">Join</button>
-			  <!-- <button type="create" class="btn btn-block">Create</button> -->
-			  <a class="btn inline-block" href="http://www.google.ca">Create</a>
+			  <legend>Join or Create Room :</legend>
+			  <input id="roomInput" 
+          type="text" placeholder="Session Name..." style="width:450px; height:40px;"><br />
+			  <a id="roomButton"
+          class="btn inline-block" >Join or Create</a>
 		    </fieldset>
           </form>
         </div>
@@ -81,5 +81,6 @@ and open the template in the editor.
   
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/cow-dev.js"></script>
   </body>
 </html>
