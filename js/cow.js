@@ -72,6 +72,7 @@
     
     // Public Variables
     cow.codeMirror = null;
+    cow.merging = false;
     cow.room = "landing";
 
     // Public method
@@ -80,10 +81,11 @@
         if (settings.codeMirror) {
             cow.codeMirror = settings.codeMirror;
         }
-
         if (settings.room) {
             cow.room = settings.room
         }
+        if (settings.merging)
+            cow.merging = settings.merging;
         //
         cow.setup();
     };
@@ -113,7 +115,10 @@
 
                         if (codeMirror.getValue() !== value) {
                             var anchor = codeMirror.getCursor(true), head = codeMirror.getCursor(false); // Backup original selection position
-                            var value = mergeStr(codeMirror.getValue()||"", value||"");
+                            if (cow.merging) {
+                                value = mergeStr(codeMirror.getValue()||"", value||"");
+                                // myChange = true;
+                            }
                             codeMirror.setValue(value); // Set new value / contents
                             codeMirror.setSelection(anchor, head);  // Restore selection position
                             codeMirror.setCursor(head.line, head.ch); // Restore cursor position
@@ -133,7 +138,7 @@
                     
                     // Setup Code Mirror
                     codeMirror.on('change', function(event, instance, changeObj) {
-                        console.log("mirror change");
+                        console.log("mirror change:", myChange, codeMirror.getValue() );
                         loadRun && loadRun();
                         if (myChange) {
                             codeKey.set(codeMirror.getValue());
