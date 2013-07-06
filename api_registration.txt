@@ -1,0 +1,46 @@
+
+curl --data "{\"account\":\"co-web-dev\", \"email\":\"dreid.93@gmail.com\", \
+            \"pass\":\"cattails\", "" \"confirmpass\":\"cattails\"}" \
+            -H "Content-Type: application/json" -i https://api.goinstant.net/v1/accounts
+
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 145
+Date: Sat, 06 Jul 2013 14:34:17 GMT
+
+{
+  "account": {
+    "name": "co-web-dev",
+    "id": 33
+  },
+  "user": {
+    "account": 33,
+    "email": "dreid.93@gmail.com",
+    "id": 32
+  }
+}
+
+------------------------------------------------------------------
+
+curl --data "{\"name\": \"cow-dev\"}" -H "Content-Type: application/json" \
+            --user "dreid.93@gmail.com:cattails" -i https://api.goinstant.net/v1/apps
+
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Location: /v1/apps/34
+Content-Type: application/json; charset=utf-8
+Content-Length: 225
+Date: Sat, 06 Jul 2013 14:37:19 GMT
+
+{
+  "account": 33,
+  "name": "cow-dev",
+  "id": 34,
+  "authenJwk": {
+    "kty": "oct",
+    "use": "sig",
+    "kid": "34",
+    "k": "xCRmquJW12N2CCwPjZSIBgaSSCDCN3jVGXvcFdEupKiIfxm1ldzVu1H0X6j-J3Y4Af6wxfefwlmhj9zMBxt2jg"
+  }
+}
