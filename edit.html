@@ -49,7 +49,7 @@ and open the template in the editor.
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-
+   
   </head>
   <body>
 
@@ -96,7 +96,9 @@ and open the template in the editor.
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+    <!-- Setup CoW -->
+    <script src="https://cdn.goinstant.net/client/platform.min.js"></script>
+    <script src="js/cow.js"></script>
     <script>
       var editor = document.getElementById('editor');
       var myCodeMirror = CodeMirror.fromTextArea(
@@ -115,6 +117,11 @@ and open the template in the editor.
                 viewportMargin: Infinity
               }
       );
+    
+      cow.init({ codeMirror: myCodeMirror });
+        
     </script>
+    
+    
   </body>
 </html>
