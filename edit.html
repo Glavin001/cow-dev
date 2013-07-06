@@ -67,10 +67,10 @@ and open the template in the editor.
 
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="#cow-edit-tab" data-toggle="tab">Raw HTML</a>
+          <a href="#cow-edit-tab" data-toggle="tab">Raw Editor</a>
         </li>
         <li>
-          <a href="#cow-view-tab" data-toggle="tab">View</a>
+          <a href="#cow-view-tab" data-toggle="tab">Run / View</a>
         </li>
       </ul>
 
@@ -92,12 +92,12 @@ and open the template in the editor.
 
         <div id="cow-view-tab"
              class="tab-pane">
-          
-         <iframe id="cow-html-render">
-         </iframe>
-          
+
+          <iframe id="cow-html-render">
+          </iframe>
+
         </div>
-        
+
       </div>
     </div>
 
@@ -105,9 +105,8 @@ and open the template in the editor.
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-      var editor = document.getElementById('cow-editor');
-      var myCodeMirror = CodeMirror.fromTextArea(
-              editor,
+      var editor = CodeMirror.fromTextArea(
+              document.getElementById('cow-editor'),
               {
                 lineNumbers: true,
                 matchBrackets: true,
@@ -122,10 +121,10 @@ and open the template in the editor.
                 viewportMargin: Infinity
               }
       );
-        
-        console.log($(window).scrollTop());
-        
-        $('#cow-html-render').height($(document).height() - 140);
+      console.log($(window).scrollTop());
+
+      $('#cow-html-render').height($(document).height() - 140);
     </script>
+    <script src="js/cow-dev.js"></script>
   </body>
 </html>
