@@ -1,0 +1,16 @@
+/* 
+    Document   : cow-dev.css
+    Created on : 6-Jul-2013, 1:18:10 PM
+    Author     : dawson
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+  display: block;
+}
+
+.cow-row {
+  margin-left: 20px;
+  margin-right: 20px;
+}
