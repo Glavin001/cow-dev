@@ -60,7 +60,7 @@ and open the template in the editor.
           <a class="brand" href="index.html">Cow Dev : </a>
 
           <div class="btn" style="float:right; margin-left: 10px;">Download</div>
-
+<!--
           <div class="btn-group" style="float:right;">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
               Language
@@ -72,7 +72,7 @@ and open the template in the editor.
               <li><a id="cow-lang-java">Java</a></li>
             </ul>
           </div>
-
+-->
         </div>
       </div>
 
@@ -96,7 +96,8 @@ and open the template in the editor.
         <div id="cow-edit-tab" 
              class="tab-pane active">
 
-          <textarea id="cow-editor">Test</textarea>
+          <textarea id="cow-editor">
+          </textarea>
 
         </div>
 
@@ -136,15 +137,20 @@ and open the template in the editor.
               }
       );
       
-      var hash = window.location.hash;
-      var userRoom = hash.substr(1, hash.length - 1);
+      var userRoom;
+      if (window.location.hash !== "#") {
+        var hash = window.location.hash;
+        userRoom = hash.substr(1, hash.length - 1);
+      }
 
-      $('.brand').text('Cow Dev : ' + userRoom);
+      userRoom = userRoom || "demo";
 
       cow.init({ 
         codeMirror: editor,
-        room: encodeURIComponent(userRoom)
+        room: encodeURIComponent(userRoom) || "demo"
       });
+
+      $('.brand').text('Cow Dev : ' + userRoom);
 
       $('#cow-html-render').height($(document).height() - 140);
     </script>
